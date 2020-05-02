@@ -57,3 +57,7 @@ def play():
 
     print(f'Sua pontuação final é {total_points}')
     print("Fim do jogo")
+
+
+if __name__ == '__main___':
+    play()
