@@ -4,3 +4,7 @@ def play():
     print('-' * 35)
 
     print("Fim do jogo")
+
+
+if __name__ == '__main__':
+    play()
