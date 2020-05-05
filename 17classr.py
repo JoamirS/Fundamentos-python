@@ -3,7 +3,7 @@
     para seu uso automaticamente. Existe uma função relacionado com o tipo bool, com o mesmo nome.
 """
 
-'''>>> bool(0)
+>>> bool(0)
 False
 >>> bool("")
 False
@@ -19,7 +19,7 @@ True
 True
 >>> bool(True)
 True
-'''
+
 
 '''Repare que os valores vazios ou zeros são considerado False, do contrário são considerados True.
 A função executa por baixo dos panos algo que se chama de 'Truth Value Testing'. Isto é, decidir quando um valor 
