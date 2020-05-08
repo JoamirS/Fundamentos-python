@@ -1,7 +1,7 @@
-"""
+'''
     built-in são funções que você não precisa importar explicitamente, pois elas estão disponíveis
     para seu uso automaticamente. Existe uma função relacionado com o tipo bool, com o mesmo nome.
-"""
+'''
 
 '''>>> bool(0)
 False
