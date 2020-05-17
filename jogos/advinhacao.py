@@ -16,7 +16,7 @@ def play():
     difficulty_level_input_user = int(input('Digite uma das 3 opções: '))
     while difficulty_level_input_user not in options_difficulty_level:
         print('Digite uma opção válida.')
-        difficulty_level_input_user = int(input('Difite uma das 3 opções: '))
+        difficulty_level_input_user = int(input('Digite uma das 3 opções: '))
 
     if difficulty_level_input_user == 1:
         print('Você escolheu o nível fácil, neste caso, você terá 20 tentivas.')
