@@ -1,15 +1,28 @@
+import random
+
+
 def play():
     print('-' * 35)
     print("Bem vindo ao jogo da Forca")
     print('-' * 35)
 
-    word_secret = "Minions".upper()
+    file = open('words.txt', 'r')
+    words_list = []
+    for line in file:
+        line = line.strip()
+        words_list.append(line)
+    file.close()
+
+    length_list_secret_number = random.randrange(0, len(words_list))
+    word_secret = words_list[length_list_secret_number].upper()
+
+    print(words_list)
     correct_letters = ['_' for letter in word_secret]
+    print(correct_letters)
 
     hanged = False
     correct_word = False
     counter_attempt = 6
-    print(correct_letters)
 
     while not hanged and not correct_word:
         attempt_user = input('Qual letra deseja procurar? ')
