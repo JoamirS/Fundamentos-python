@@ -1,5 +1,7 @@
 import random
 
+list_all_attempts = list()
+
 
 def play():
     print_opening_message()
@@ -25,6 +27,8 @@ def play():
             mistake += 1
             draw_hanged(mistake)
 
+        list_all_attempts.append(attempt_user)
+
         print(f'Você possui {mistake} erros.')
         total_attempt += 1
 
@@ -32,56 +36,6 @@ def play():
         correct_word = '_' not in correct_letters
 
         print(correct_letters)
-
-        def draw_hanged(mistake_input):
-            print("  _______     ")
-            print(" |/      |    ")
-
-            if mistake_input == 1:
-                print(" |      (_)   ")
-                print(" |            ")
-                print(" |            ")
-                print(" |            ")
-
-            if mistake_input == 2:
-                print(" |      (_)   ")
-                print(" |      \     ")
-                print(" |            ")
-                print(" |            ")
-
-            if mistake_input == 3:
-                print(" |      (_)   ")
-                print(" |      \|    ")
-                print(" |            ")
-                print(" |            ")
-
-            if mistake_input == 4:
-                print(" |      (_)   ")
-                print(" |      \|/   ")
-                print(" |            ")
-                print(" |            ")
-
-            if mistake_input == 5:
-                print(" |      (_)   ")
-                print(" |      \|/   ")
-                print(" |       |    ")
-                print(" |            ")
-
-            if mistake_input == 6:
-                print(" |      (_)   ")
-                print(" |      \|/   ")
-                print(" |       |    ")
-                print(" |      /     ")
-
-            if mistake_input == 7:
-                print(" |      (_)   ")
-                print(" |      \|/   ")
-                print(" |       |    ")
-                print(" |      / \   ")
-
-            print(" |            ")
-            print("_|___         ")
-            print()
 
     if correct_word:
         print("Parabéns, você ganhou!")
@@ -145,7 +99,17 @@ def initializes_correct_letters(word_secret):
 def get_attempt():
     attempt = input('Qual a letra? ')
     attempt = attempt.strip().upper()
+    attempt_already_made(attempt)
     return attempt
+
+
+def attempt_already_made(attempt_to_be_validated):
+    for letter in list_all_attempts:
+        if attempt_to_be_validated == letter:
+            print('Você já digitou esta letra.')
+            get_attempt()
+        else:
+            continue
 
 
 def mark_kick_right(secret_word_input, attempt_user_input, correct_letters_input):
@@ -155,6 +119,57 @@ def mark_kick_right(secret_word_input, attempt_user_input, correct_letters_input
         if attempt_user_input == letter:
             correct_letters_input[index_word] = letter
         index_word += 1
+
+
+def draw_hanged(mistake_input):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if mistake_input == 1:
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if mistake_input == 2:
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if mistake_input == 3:
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if mistake_input == 4:
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if mistake_input == 5:
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if mistake_input == 6:
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if mistake_input == 7:
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
 
 
 if __name__ == '__main__':
