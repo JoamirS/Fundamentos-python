@@ -1,5 +1,5 @@
 """
-    alavra secreta das contidas em um arquivo chamado de palavras.txt.
+    Palavra secreta está contida em um arquivo chamado de palavras.txt.
 
 E se quiséssemos deixar essa função um pouco mais flexível permitindo que fosse passado o nome do arquivo usado para o
     carregamento? Permitindo assim as seguintes chamadas:
