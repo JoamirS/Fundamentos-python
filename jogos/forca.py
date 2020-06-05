@@ -1,4 +1,5 @@
 import random
+from time import sleep
 
 list_all_attempts = list()
 
@@ -19,6 +20,7 @@ def play():
 
     while not hanged and not correct_word:
         print(f'Esta é {total_attempt}ª rodada.')
+        print(list_all_attempts)
         attempt_user = get_attempt()
 
         if attempt_user in word_secret:
@@ -99,17 +101,26 @@ def initializes_correct_letters(word_secret):
 def get_attempt():
     attempt = input('Qual a letra? ')
     attempt = attempt.strip().upper()
-    attempt_already_made(attempt)
+    attempt_in_validation = attempt_already_made(attempt)
+
+    if attempt_in_validation:
+        print('Você já digitou essa letra, tente novamente.')
+        get_attempt()
+    else:
+        print('Validando .', end='')
+        sleep(1)
+        print('.', end='')
+        sleep(1)
+        print('.', end='')
     return attempt
 
 
 def attempt_already_made(attempt_to_be_validated):
     for letter in list_all_attempts:
         if attempt_to_be_validated == letter:
-            print('Você já digitou esta letra.')
-            get_attempt()
+            return True
         else:
-            continue
+            return False
 
 
 def mark_kick_right(secret_word_input, attempt_user_input, correct_letters_input):
