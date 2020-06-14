@@ -21,7 +21,8 @@ def play():
     while not hanged and not correct_word:
         print(f'Esta é {total_attempt}ª rodada.')
         print(list_all_attempts)
-        attempt_user = get_attempt()
+        input_user = str(input('Qual é a sua tentativa? '))
+        attempt_user = get_attempt(receive_attempt=input_user)
 
         if attempt_user in word_secret:
             mark_kick_right(secret_word_input=word_secret, attempt_user_input=attempt_user, correct_letters_input=correct_letters)
@@ -98,29 +99,43 @@ def initializes_correct_letters(word_secret):
     return ['_' for letter in word_secret]
 
 
-def get_attempt():
-    attempt = input('Qual a letra? ')
-    attempt = attempt.strip().upper()
+def get_attempt(receive_attempt):
+    attempt = receive_attempt.strip().upper()
+
     attempt_in_validation = attempt_already_made(attempt)
 
     if attempt_in_validation:
-        print('Você já digitou essa letra, tente novamente.')
-        get_attempt()
-    else:
-        print('Validando .', end='')
-        sleep(1)
-        print('.', end='')
-        sleep(1)
-        print('.', end='')
+        tuple_with_string_and_boolean = new_attempt()
+
+        if not tuple_with_string_and_boolean[1]:
+            attempt = tuple_with_string_and_boolean[0]
+
+    print('Validando .', end='')
+    sleep(1)
+    print('.', end='')
+    sleep(1)
+    print('.')
     return attempt
 
 
 def attempt_already_made(attempt_to_be_validated):
-    for letter in list_all_attempts:
-        if attempt_to_be_validated == letter:
-            return True
-        else:
-            return False
+    if list_all_attempts.count(attempt_to_be_validated) > 0:
+        return True
+    else:
+        return False
+
+
+def new_attempt():
+    new_attempt_boolean = True
+    new_attempt_valid = ''
+    while new_attempt_boolean:
+        print('Você já digitou essa letra, tente novamente.')
+
+        new_attempt_valid = str(input('Qual é a nova tentativa? ')).strip().upper()
+
+        new_attempt_boolean = attempt_already_made(new_attempt_valid)
+
+    return new_attempt_valid, new_attempt_boolean
 
 
 def mark_kick_right(secret_word_input, attempt_user_input, correct_letters_input):
