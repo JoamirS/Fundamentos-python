@@ -1,5 +1,7 @@
 '''
-    É possível utilizar o format para alinhar os textos e para determinar uma quantidade máxima de caracteres que podem ser exibidos. Veja a lista abaixo com alguns exemplos e seus resultados para a seguinte string: texto = “Eu gosto de pizza de {}”.format(“Calabresa”).
+    É possível utilizar o format para alinhar os textos e para determinar uma quantidade máxima de caracteres que podem
+    ser exibidos. Veja a lista abaixo com alguns exemplos e seus resultados para a seguinte string:
+    texto = “Eu gosto de pizza de {}”.format(“Calabresa”).
 
 {0:>20} - Alinha a string à direita com 20 espaços em branco
 
