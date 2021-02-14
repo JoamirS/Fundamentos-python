@@ -1,0 +1,5 @@
+first_list = list()
+first_list.append(15)
+first_list.insert(15, 0)
+first_list.extend([27, 10])
+print(first_list)
