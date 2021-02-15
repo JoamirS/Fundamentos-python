@@ -1,3 +1,8 @@
+def deposit_all_accounts(accounts_input):
+    for account in accounts_input:
+        account.cash_deposit(100)
+
+
 class CheckingAccount:
     def __init__(self, code):
         self.code = code
@@ -9,10 +14,6 @@ class CheckingAccount:
 
     def __str__(self):
         return "[Nome: {2} Código: {0} Saldo: {1} ]".format(self.code, self.balance, self.account_holder_name)
-
-    def deposit_all_accounts(accounts):
-        for account in accounts:
-            account.cash_deposit(100)
 
     def add_account_name(self, nome_account):
         self.account_holder_name = nome_account
@@ -28,3 +29,10 @@ print(danny_account)
 
 joamir_account.cash_deposit(1000)
 print(joamir_account)
+
+accounts = [joamir_account, danny_account]
+print(accounts[0], accounts[1])
+
+deposit_all_accounts(accounts)
+print(accounts[0], accounts[1])
+
