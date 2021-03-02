@@ -12,7 +12,7 @@ def slice_information(input_string):
 
 def burnt_equipment(input_string):
     for chosen_word in input_string:
-        if chosen_word == "nao" or chosen_word == "liga":
+        if chosen_word == "nao" and chosen_word == "liga":
             return "Equipamento não liga."
         else:
             return "O.S fora do escopo desejado."
