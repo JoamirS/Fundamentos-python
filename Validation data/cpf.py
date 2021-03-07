@@ -1,7 +1,10 @@
+from validate_docbr import CPF
+
+
 class Cpf:
     def __init__(self, document):
         document = str(document)
-        if self.cpf_is_valid(document):
+        if self.validate_cpf(document):
             self.cpf = document
         else:
             raise ValueError("CPF inválido")
@@ -9,11 +12,12 @@ class Cpf:
     def __str__(self):
         return self.formated_cpf()
 
-    def cpf_is_valid(self, document):
-        if len(document) == 11:
-            return True
+    def validate_cpf(self, cpf):
+        if len(cpf) == 11:
+            validator = CPF()
+            return validator.validate(cpf)
         else:
-            return False
+            raise ValueError("Quantidade inválida de dígitos.")
 
     def formated_cpf(self):
         slice_from_first_third = self.cpf[:3]
