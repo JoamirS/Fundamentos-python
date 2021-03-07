@@ -20,8 +20,6 @@ class Cpf:
             raise ValueError("Quantidade inválida de dígitos.")
 
     def formated_cpf(self):
-        slice_from_first_third = self.cpf[:3]
-        slice_from_fourth_sixth = self.cpf[3:6]
-        slice_from_seventh_ninth = self.cpf[6:9]
-        slice_from_tenth_eleventh = self.cpf[9:11]
-        return (f"{slice_from_first_third}.{slice_from_fourth_sixth}.{slice_from_seventh_ninth}-{slice_from_tenth_eleventh} ")
+        cpf_mask = CPF()
+        return cpf_mask.mask(self.cpf)
+
