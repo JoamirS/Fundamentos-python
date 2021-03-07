@@ -21,7 +21,10 @@ class CpfCnpj:
             raise ValueError("Documento inválido")
 
     def __str__(self):
-        return self.formated_cpf()
+        if self.type_document == "cpf":
+            return self.format_cpf()
+        elif self.type_document == "cnpj":
+            return self.format_cnpj()
 
     def validate_cpf(self, cpf):
         if len(cpf) == 11:
@@ -30,7 +33,7 @@ class CpfCnpj:
         else:
             raise ValueError("Quantidade inválida de dígitos.")
 
-    def formated_cpf(self):
+    def format_cpf(self):
         cpf_mask = CPF()
         return cpf_mask.mask(self.cpf)
 
@@ -40,3 +43,7 @@ class CpfCnpj:
             return validate_cnpj.validate(cnpj)
         else:
             raise ValueError("Quantidade de digitos inválida.")
+
+    def format_cnpj(self):
+        cnpj_mask = CNPJ()
+        return cnpj_mask.mask(self.cnpj)
