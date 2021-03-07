@@ -1,4 +1,6 @@
-from cpf import Cpf
+from cpf_and_cnpj import CpfCnpj
 
-test_cpf = Cpf("44141347221")
-print(test_cpf)
+# test_cpf = CpfCnpj("12354367996")
+test_cnpj = "02995239380001"
+document = CpfCnpj(test_cnpj, 'cnpj')
+
