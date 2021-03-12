@@ -1,48 +1,49 @@
 from validate_docbr import CPF, CNPJ
 
 
-class CpfCnpj:
-    def __init__(self, document, type_document):
-        self.type_document = type_document
-        document = str(document)
-
-        if self.type_document == "cpf":
-            if self.validate_cpf(document):
-                self.cpf = document
-            else:
-                raise ValueError("CPF inválido")
-
-        elif self.type_document == "cnpj":
-            if self.validate_cnpj(document):
-                self.cnpj = document
-            else:
-                raise ValueError("CNPJ inválido")
+class Document:
+    @staticmethod
+    def create_document(document):
+        if len(document) == 11:
+            return DocumentCpf(document)
+        elif len(document) == 14:
+            return DocumentCnpj(document)
         else:
-            raise ValueError("Documento inválido")
+            raise ValueError("Quantidade de dígitos está incorreta")
+
+
+class DocumentCpf:
+    def __init__(self, document):
+        if self.validate_cpf(document):
+            self.cpf = document
+        else:
+            raise ValueError("CPF inválido")
 
     def __str__(self):
-        if self.type_document == "cpf":
-            return self.format_cpf()
-        elif self.type_document == "cnpj":
-            return self.format_cnpj()
+        return self.format_cpf()
 
-    def validate_cpf(self, cpf):
-        if len(cpf) == 11:
-            validator = CPF()
-            return validator.validate(cpf)
-        else:
-            raise ValueError("Quantidade inválida de dígitos.")
+    def validate_cpf(self, document):
+        validator = CPF()
+        return validator.validate(document)
 
     def format_cpf(self):
         cpf_mask = CPF()
         return cpf_mask.mask(self.cpf)
 
-    def validate_cnpj(self, cnpj):
-        if len(cnpj) == 14:
-            validate_cnpj = CNPJ()
-            return validate_cnpj.validate(cnpj)
+
+class DocumentCnpj:
+    def __int__(self, document):
+        if self.validate_cnpj(document):
+            self.cnpj = document
         else:
-            raise ValueError("Quantidade de digitos inválida.")
+            raise ValueError("CNPJ inválido")
+
+    def __str__(self):
+        return self.format_cnpj()
+
+    def validate_cnpj(self, document):
+        validate_cnpj = CNPJ()
+        return validate_cnpj.validate(document)
 
     def format_cnpj(self):
         cnpj_mask = CNPJ()
