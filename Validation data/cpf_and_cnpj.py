@@ -14,7 +14,7 @@ class Document:
 
 class DocumentCpf:
     def __init__(self, document):
-        if self.validate_cpf(document):
+        if self.authenticate_cpf(document):
             self.cpf = document
         else:
             raise ValueError("CPF inválido")
@@ -22,7 +22,7 @@ class DocumentCpf:
     def __str__(self):
         return self.format_cpf()
 
-    def validate_cpf(self, document):
+    def authenticate_cpf(self, document):
         validator = CPF()
         return validator.validate(document)
 
@@ -33,7 +33,7 @@ class DocumentCpf:
 
 class DocumentCnpj:
     def __int__(self, document):
-        if self.validate_cnpj(document):
+        if self.authenticate_cnpj(document):
             self.cnpj = document
         else:
             raise ValueError("CNPJ inválido")
@@ -41,9 +41,9 @@ class DocumentCnpj:
     def __str__(self):
         return self.format_cnpj()
 
-    def validate_cnpj(self, document):
-        validate_cnpj = CNPJ()
-        return validate_cnpj.validate(document)
+    def authenticate_cnpj(self, document):
+        validator = CNPJ()
+        return validator.validate(document)
 
     def format_cnpj(self):
         cnpj_mask = CNPJ()
