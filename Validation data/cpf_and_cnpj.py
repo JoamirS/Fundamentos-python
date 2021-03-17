@@ -32,7 +32,7 @@ class DocumentCpf:
 
 
 class DocumentCnpj:
-    def __int__(self, document):
+    def __init__(self, document):
         if self.authenticate_cnpj(document):
             self.cnpj = document
         else:
