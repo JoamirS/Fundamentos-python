@@ -16,3 +16,9 @@ print(re.findall(r'João | Maria', texto))
 print(re.findall(r'João | Maria | q..ijo', texto))
 
 print(re.findall(r'[Jj]oão|[Mm]aria', texto))
+
+print(re.findall(r'[a-z]aria', texto))
+
+print(re.findall(r'[a-zA-Z]aria', texto))
+
+print(re.findall(r'jOãO | mAria', texto, flags=re.IGNORECASE))
