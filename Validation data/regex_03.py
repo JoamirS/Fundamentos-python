@@ -1,9 +1,11 @@
 # Meta caracteres: ^ $ ( )
 # * 0 ou n
-# + 1 ou n
+# + 1 ou n {1,}
 # ? 0 ou 1
 # {n}
+# {min, max}
 # ()+ [a-zA-Z0-9]+
+
 
 import re
 
