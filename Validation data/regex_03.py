@@ -22,4 +22,3 @@ Não canso de ouvir a Maria:
 
 print(re.findall(r'jo+ão', texto, flags=re.IGNORECASE))
 print(re.sub(r'jo+ão+', 'Felipe', texto, flags=re.IGNORECASE))
-
