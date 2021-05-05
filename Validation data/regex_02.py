@@ -1,6 +1,10 @@
+# | Significa Ou
+# . Ponto é qualquer caractere ( com exceção da quebra de linha)
+# [] Conjunto que funciona de forma similar ao Ou
+
 import re
 
-texto = '''
+text = '''
 
 João trouxe flores para sua amada namorada em 10 de janeiro de 1970,
 maria era o nome dela.
@@ -12,15 +16,15 @@ Não canso de ouvir a Maria:
 Joooooooooãooooooo, o café tá prontinho aqui. Veeemm!
 '''
 
-print(re.findall(r'João | Maria', texto))
+print(re.findall(r'João | Maria', text))
 
-print(re.findall(r'João | Maria | q..ijo', texto))
+print(re.findall(r'João | Maria | q..ijo', text))
 
-print(re.findall(r'[Jj]oão|[Mm]aria', texto))
+print(re.findall(r'[Jj]oão|[Mm]aria', text))
 
-print(re.findall(r'[a-z]aria', texto))
+print(re.findall(r'[a-z]aria', text))
 
-print(re.findall(r'[a-zA-Z]aria', texto))
+print(re.findall(r'[a-zA-Z]aria', text))
 
-print(re.findall(r'jOãO | mAria', texto, flags=re.IGNORECASE))
+print(re.findall(r'jOãO | mAria', text, flags=re.IGNORECASE))
 
