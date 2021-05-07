@@ -9,7 +9,7 @@
 
 import re
 
-texto = '''
+text = '''
 João trouxe flores para sua amada namorada em 10 de janeiro de 1970,
 maria era o nome dela.
 Foi um ano excelente na vida de joão. Teve 5 filhos, todos adultos atualmente.
@@ -20,5 +20,14 @@ Não canso de ouvir a Maria:
 "Joooooooooãooooooo, o café tá prontinho aqui. Veeemm"!
 '''
 
-print(re.findall(r'jo+ão', texto, flags=re.IGNORECASE))
-print(re.sub(r'jo+ão+', 'Felipe', texto, flags=re.IGNORECASE))
+print(re.findall(r'jo+ão+', text, flags=re.IGNORECASE))
+print(re.sub(r'jo+ão+', 'Felipe', text, flags=re.IGNORECASE))
+print(re.findall(r've{3}m{1,2}', text, flags=re.IGNORECASE))
+
+''' 
+O exemplo abaixo mostra como podemos usar procurar palavras distintas (uma com sufixo ou e outra sem) 
+utilizando expressões regulares com uma mesma expressão. 
+'''
+
+text_two = 'João ama ser amado'
+print(re.findall(r'ama[od]{0,2}', text_two, flags=re.IGNORECASE))
