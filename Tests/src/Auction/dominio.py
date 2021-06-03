@@ -19,7 +19,7 @@ class Bid:
 class Auction:
     def __init__(self, description):
         self.description = description
-        self.__bids = []
+        self.__bids = list()
 
     @property
     def bids(self):
@@ -35,5 +35,5 @@ class AuctionEvaluator:
         for bid in auction.bids:
             if bid.value > self.highest_bid:
                 self.highest_bid = bid.value
-            elif bid.value < self.lowest_bid:
+            if bid.value < self.lowest_bid:
                 self.lowest_bid = bid.value
