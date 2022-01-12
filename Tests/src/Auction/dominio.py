@@ -20,20 +20,19 @@ class Auction:
     def __init__(self, description):
         self.description = description
         self.__bids = list()
+        self.highest_bid = sys.float_info.min
+        self.lowest_bid = sys.float_info.max
+
+
+    def propose(self, bid: Bid):
+        if bid.value > bid.highest_bid:
+            bid.highest_bid = bid.value
+        if bid.value < bid.lowest_bid:
+            bid.lowest_bid = bid.value
+
+        self.__bids.append(bid)
 
     @property
     def bids(self):
         return self.__bids
 
-
-class AuctionEvaluator:
-    def __init__(self):
-        self.highest_bid = sys.float_info.min
-        self.lowest_bid = sys.float_info.max
-
-    def assess(self, auction: Auction):
-        for bid in auction.bids:
-            if bid.value > self.highest_bid:
-                self.highest_bid = bid.value
-            if bid.value < self.lowest_bid:
-                self.lowest_bid = bid.value
